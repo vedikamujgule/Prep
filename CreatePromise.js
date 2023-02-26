@@ -2,13 +2,18 @@
 
  createOrder(cart)
  .then(function(orderID){
-    proceedToPayment(orderID);
- })
+    console.log("Order is is")
+    return orderID;
+})
+.then(function(orderID){
+    return proceedToPayment(orderID);
+})
+.then(function(paymentInfo){
+    console.log(paymentInfo)
+})
  .catch(function(err){
     console.log("Cart is invalid", err)
  });//return orderid
-
- promise.then(confirm =>proceedToPayment(orderID))
 
 //create promise
 
@@ -35,8 +40,7 @@ function proceedToPayment(orderID){
         resolve("Payment Successful")
     })
 }
-
-
+  
 function validateCart(){
     return true;
 }
